@@ -1,6 +1,6 @@
 {
   "name": "sh-socket-server",
-  "version": "0.0.1",
+  "version": "0.0.3",
   "description": "Sh server to process laravel emits to js subscriber",
   "scripts": {
     "start": "node main.js"
