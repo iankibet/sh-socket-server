@@ -1,11 +1,16 @@
 const express = require('express')
+require('dotenv').config()
 const Redis = require("ioredis");
 const http = require('http')
 const { Server } = require('socket.io')
 const app = express()
 const server = http.createServer(app)
 const io = new Server(server)
-const redisConf = { host: "localhost", port: 6379 }
+
+const redisConf = {
+    host: process.env.REDIS_HOST ? process.env.REDIS_HOST : 'localhost',
+    port: process.env.REDIS_PORT ? process.env.REDIS_PORT : 6379
+}
 const sub = new Redis(redisConf);
 const pub = new Redis(redisConf);
 
