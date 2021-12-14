@@ -1,17 +1,17 @@
 # sh-socket-server
 
 To install run 
->npm install sh-socket-server
+>npm install -g sh-socket-server
 
 Install redis server if it does not exist already 
 
-Create a .env in the root directory if it does not exist and specify redis host and port
+After that, initialize redis server to set redis host , port and http port to run the server
 
->REDIS_HOST=localhost
->REDIS_PORT=6379
+>sh-socket-server init
 
 To run the server
 
->npm run start
+>sh-socket-server start
 
 You can use pm2 to run and monitor it. It will restart in case it fails
+
