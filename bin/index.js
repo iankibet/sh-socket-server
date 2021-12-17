@@ -18,23 +18,29 @@ if(arguments.length === 0) {
     rl.question('Which http port do you want to use? '+colors.yellow('\n[6001]'), function(httpPort) {
         rl.question('Enter redis host' + colors.yellow('\n[localhost]'), function(redisHost) {
             rl.question("Enter redis port " + colors.yellow('\n[6379]'), function(redisPort) {
-                if (!httpPort) {
-                    httpPort = 6001
-                }
-                if (!redisPort) {
-                    redisPort = 6379
-                }
-                if (!redisHost) {
-                    redisHost = 'localhost'
-                }
-                const json = {
-                    'httpPort': httpPort,
-                    'redisPort': redisPort,
-                    'redisHost': redisHost
-                }
-                fs.writeFileSync('./sh-socket-config.json', JSON.stringify(json, null, 2))
-                console.log(colors.green('Success, now run:\n') + colors.blue('sh-socket-server start') +'\n' + colors.green('to start your server'))
-                process.exit(0);
+                rl.question('Enter allowed headers for xhr separated by comma ' + colors.yellow('\n[*]'), function(allowedDomains){
+                    if (!httpPort) {
+                        httpPort = 6001
+                    }
+                    if (!redisPort) {
+                        redisPort = 6379
+                    }
+                    if (!redisHost) {
+                        redisHost = 'localhost'
+                    }
+                    if (!allowedDomains) {
+                       allowedDomains = '*'
+                    }
+                    const json = {
+                        'httpPort': httpPort,
+                        'redisPort': redisPort,
+                        'redisHost': redisHost,
+                        'allowedDomains': allowedDomains
+                    }
+                    fs.writeFileSync('./sh-socket-config.json', JSON.stringify(json, null, 2))
+                    console.log(colors.green('Success, now run:\n') + colors.blue('sh-socket-server start') +'\n' + colors.green('to start your server'))
+                    process.exit(0);
+                } )
             });
         })
     });

@@ -1,5 +1,6 @@
 {
   "httpPort": 6001,
   "redisPort": 6379,
-  "redisHost": "localhost"
+  "redisHost": "localhost",
+  "allowedDomains": "http://localhost:8081,http://localhost:8080"
 }
