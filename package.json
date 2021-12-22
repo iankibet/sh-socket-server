@@ -1,6 +1,6 @@
 {
   "name": "sh-socket-server",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "description": "Sh server to process laravel emits to js subscriber",
   "bin": {
     "sh-socket-server": "./bin/index.js"
